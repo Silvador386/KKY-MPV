@@ -9,7 +9,7 @@ from torch.utils.data import DataLoader
 import torchvision.transforms as T
 from tqdm import tqdm
 
-from src.data.catalog import FungiTasticCatalog, CUBCatalog
+from src.data.catalog import FungiTasticCatalog
 from src.data.image_datamodule import ImageDataModule
 from src.data.components.embedding_utils import save_embeddings_metadata
 from src.models.components.feature_extractors import TimmFeatureExtractor, HuggingFaceFeatureExtractor, TorchHubFeatureExtractor
@@ -62,9 +62,7 @@ def build_transform_views(mean, std, size, view_transformations):
 
 
 def get_catalog(kind: str, dataset_root: str):
-    if kind.lower() == "cub":
-        return CUBCatalog(dataset_root=dataset_root, download=True)
-    elif kind.lower() == "ft":
+    if kind.lower() == "ft":
         return FungiTasticCatalog(dataset_root=dataset_root,
                                   dataset_variant="full",
                                   dataset_size="720p",
@@ -251,7 +249,7 @@ def main():
     else:
         model = extractor(args.architecture, use_f16=use_f16, use_low_cpu=use_f16)
 
-    model = torch.compile(model)
+    # model = torch.compile(model)
     model.cuda()
 
     inference_metadata = {
@@ -265,9 +263,6 @@ def main():
     for split, loader in dataloaders.items():
         if loader is None:
             continue
-
-        # if split != "test":
-        #     continue
 
         print(f"\n[+] Processing split: {split}")
         if args.use_views == "true":

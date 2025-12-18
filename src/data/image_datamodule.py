@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader, Dataset
 from torchvision.transforms import Compose
 
 from src.data.base_datamodule import BaseDataModule
-from src.data.catalog import CUBCatalog, BaseCatalog
+from src.data.catalog import BaseCatalog, FungiTasticCatalog
 from src.data.catalog.base import Catalog
 from src.data.components.splits import DatasetSplits
 from src.data.datasets import ImageDataset, CombinedDataset
@@ -123,8 +123,10 @@ if __name__ == "__main__":
         ]
     )
 
-    metadata = CUBCatalog(
+    metadata = FungiTasticCatalog(
         dataset_root=dataset_dir_path,
+        dataset_variant="fewshot",
+        dataset_size="720p",
         download=True,
     )
     df = metadata.get_metadata()

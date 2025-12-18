@@ -6,10 +6,10 @@ DATA_ROOT='/scratch.ssd/silvador386/job_14662737.pbs-m1/datasets'
 DATASET_SHORTCUT='ft-fewshot'
 OUTPUT_DIR="./logs/embeddings"
 
-DEFAULT_BATCH_SIZE=256
+DEFAULT_BATCH_SIZE=32
 DEFAULT_USE_F16_MODEL="false"
 DEFAULT_USE_VIEWS="true"
-NUM_WORKERS=12
+NUM_WORKERS=6
 
 # -----------------------------
 # Model definitions
@@ -33,26 +33,23 @@ IMAGE_SIZE["DINOv3_7B_16"]=512
 MEAN["DINOv3_7B_16"]="0.485 0.456 0.406"
 STD["DINOv3_7B_16"]="0.229 0.224 0.225"
 EVAL_RESIZE["DINOv3_7B_16"]="false"
-BATCH_SIZE_MODEL["DINOv3_7B_16"]=256
 USE_F16_MODEL["DINOv3_7B_16"]="true"
 
 # BVRA-ViT-b16
- MODEL_ID["BVRA-ViT-b16"]="hf-hub:BVRA/vit_base_patch16_224.in1k_ft_fungitastic_224"
- SOURCE["BVRA-ViT-b16"]="timm"
- IMAGE_SIZE["BVRA-ViT-b16"]=224  # Should be 448?
- MEAN["BVRA-ViT-b16"]="0.5 0.5 0.5"
- STD["BVRA-ViT-b16"]="0.5 0.5 0.5"
- EVAL_RESIZE["BVRA-ViT-b16"]="false"
- BATCH_SIZE_MODEL["BVRA-ViT-b16"]=256
+MODEL_ID["BVRA-ViT-b16"]="hf-hub:BVRA/vit_base_patch16_224.in1k_ft_fungitastic_224"
+SOURCE["BVRA-ViT-b16"]="timm"
+IMAGE_SIZE["BVRA-ViT-b16"]=224  # Should be 448?
+MEAN["BVRA-ViT-b16"]="0.5 0.5 0.5"
+STD["BVRA-ViT-b16"]="0.5 0.5 0.5"
+EVAL_RESIZE["BVRA-ViT-b16"]="false"
 
 # BVRA-Swin
- MODEL_ID["BVRA-Swin-p4w12"]="hf-hub:BVRA/swin_base_patch4_window12_384.in1k_ft_fungitastic_384"
- SOURCE["BVRA-Swin-p4w12"]="timm"
- IMAGE_SIZE["BVRA-Swin-p4w12"]=224  # Should be 448?
- MEAN["BVRA-Swin-p4w12"]="0.5 0.5 0.5"
- STD["BVRA-Swin-p4w12"]="0.5 0.5 0.5"
- EVAL_RESIZE["BVRA-Swin-p4w12"]="false"
- BATCH_SIZE_MODEL["BVRA-Swin-p4w12"]=256
+MODEL_ID["BVRA-Swin-p4w12"]="hf-hub:BVRA/swin_base_patch4_window12_384.in1k_ft_fungitastic_384"
+SOURCE["BVRA-Swin-p4w12"]="timm"
+IMAGE_SIZE["BVRA-Swin-p4w12"]=224  # Should be 448?
+MEAN["BVRA-Swin-p4w12"]="0.5 0.5 0.5"
+STD["BVRA-Swin-p4w12"]="0.5 0.5 0.5"
+EVAL_RESIZE["BVRA-Swin-p4w12"]="false"
 
 # -----------------------------
 # Run All Models
